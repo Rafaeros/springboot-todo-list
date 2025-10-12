@@ -12,28 +12,9 @@ Um sistema de **gerenciamento de tarefas (To-Do List)** desenvolvido em **Java c
   - Spring Data JPA
   - Spring Security
   - Thymeleaf
-- **Hibernate**
 - **Maven**
 - **TailwindCSS** (para o front-end responsivo)
-
----
-
-## 📦 Estrutura do Projeto
-
-📂 src
-┣ 📂 main
-┃ ┣ 📂 java/br/rafaeros/todo
-┃ ┃ ┣ 📂 controller
-┃ ┃ ┣ 📂 model
-┃ ┃ ┣ 📂 repository
-┃ ┃ ┣ 📂 service
-┃ ┃ ┗ 📜 TodoApplication.java
-┃ ┗ 📂 resources
-┃ ┣ 📂 templates (HTML com Thymeleaf)
-┃ ┣ 📂 static (CSS, JS)
-┃ ┗ 📜 application.properties
-┗ 📂 test
-
+- **PostgreSQL** (banco de dados)
 ---
 
 ## 🧩 Funcionalidades Principais
@@ -43,18 +24,46 @@ Um sistema de **gerenciamento de tarefas (To-Do List)** desenvolvido em **Java c
   - Autenticação e controle de sessão
   - Proteção de rotas com Spring Security
 
-- 🗂️ **Categorias de Tarefas**
+- 🗂️ **Categorias de Tarefas (Em desenvolvimento)**
   - Criação, edição e exclusão de categorias
   - Cada tarefa pertence a uma categoria
 
-- 📝 **Gerenciamento de Tarefas**
+- 📝 **Gerenciamento de Tarefas (Em desenvolvimento)**
   - Criar, visualizar, atualizar e excluir tarefas
   - Status: pendente, em andamento ou concluída
   - Atribuição de prioridade
   - Registro de data de criação e conclusão
 
-- 📊 **Painel do Usuário**
+- 📊 **Painel do Usuário (Em desenvolvimento)**
   - Listagem de tarefas do usuário logado
   - Filtro por categoria e status
+
+---
+
+## 🚀 Configuração do projeto
+
+1. Clone o repositório do GitHub: `git clone https://github.com/rafaeros/to-do-list.git`
+2. Navegue para a pasta do projeto: `cd to-do-list`
+3. Instale as dependências: `mvn install`
+4. configure o banco de dados em `src/main/resources/application.properties`
+  ```properties
+  spring.datasource.url=jdbc:postgresql://localhost:5432/yourdatabase
+  spring.datasource.username=yourusername
+  spring.datasource.password=yourpassword
+  ```
+5. Execute o projeto: `mvn spring-boot:run`
+6. Acesse o projeto em http://localhost:8090
+
+---
+
+## 📝 Contribua
+
+Se vocês gostam do projeto e deseja contribuir, sinta-se livre para fazer um pull request ou abrir um issue.
+
+---
+
+## 📜 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://github.com/Rafaeros/springboot-todo-list/blob/main/LICENSE) para mais detalhes.
 
 ---
