@@ -1,0 +1,26 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="container mx-auto p-6">
+
+    
+
+    <h1 class="text-3xl font-bold text-blue-600 mb-6">Home Page</h1>
+
+    <form th:action="@{/create-todo}" method="post" class="space-y-4">
+        <div>
+            <label for="description" class="block text-gray-700">Description:</label>
+            <input type="text" id="description" name="description" class="border rounded w-full p-2" required>
+        </div>
+        <div>
+            <label for="dueDate" class="block text-gray-700">Due Date:</label>
+            <input type="date" id="dueDate" name="dueDate" class="border rounded w-full p-2" required>
+        </div>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Create Todo</button>
+    </form>
+</body>
