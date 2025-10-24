@@ -17,6 +17,10 @@ public class UserService {
         this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email).orElse(null);
+    }
+
 
     public User registerUser(UserRegisterDTO dto) {
         if (!dto.getPassword().equals(dto.getConfirmPassword())) {
