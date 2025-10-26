@@ -22,6 +22,10 @@ public class TaskService {
         taskRepository.save(task);
     }
 
+    public Task findById(long taskId) {
+        return taskRepository.findById(taskId).orElseThrow(null);
+    }
+
     public List<Task> findAll() {
         return taskRepository.findAll();
     }
@@ -30,11 +34,27 @@ public class TaskService {
         return taskRepository.findAllByUserId(userId);
     }
 
+    public List<Task> findAllPendingByUserId(long userId) {
+        return taskRepository.findAllStatusByUserId(userId, TaskStatus.PENDING);
+    }
+
+    public List<Task> findAllCompletedByUserId(long userId) {
+        return taskRepository.findAllStatusByUserId(userId, TaskStatus.COMPLETED);
+    }
+
+    public void updateTask(Task task) {
+        taskRepository.save(task);
+    }
+
     public void updateTaskStatus(long taskId, TaskStatus status, LocalDateTime date) {
         Task task = taskRepository.findById(taskId).orElseThrow(null);
         task.setStatus(status);
         task.setCompletedAt(date);
         taskRepository.save(task);
+    }
+
+    public void deleteTask(long taskId) {
+        taskRepository.deleteById(taskId);
     }
 
 }

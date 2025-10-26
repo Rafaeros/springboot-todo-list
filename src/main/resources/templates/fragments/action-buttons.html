@@ -1,0 +1,11 @@
+<div th:fragment="action-buttons(taskId)" class="flex flex-row gap-2">
+    <a th:href="@{|/tasks/edit/${taskId}|}"
+        class="flex items-center justify-center bg-blue-600 font-bold p-3 rounded text-white hover:bg-blue-700 transition duration-300">
+        <img th:src="@{/img/edit.svg}" alt="Edit Icon" class="w-6 h-6">
+    </a>
+
+    <a th:href="@{|/tasks/${taskId}|}"
+        class="flex items-center justify-center bg-red-500 font-bold p-3 rounded text-white hover:bg-red-600 transition duration-300">
+        <img th:src="@{/img/delete.svg}" alt="Delete Icon" class="w-6 h-6">
+    </a>
+</div>

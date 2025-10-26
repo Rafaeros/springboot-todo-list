@@ -16,7 +16,7 @@ import br.rafaeros.todo.service.CustomUserDetailsService;
 public class SecurityConfig {
 
     @Autowired
-    private CustomUserDetailsService userDetailsService;
+    private CustomUserDetailsService userDetailsService; 
 
     @Bean
     public PasswordEncoder passwordEncoder() {
