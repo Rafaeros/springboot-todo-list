@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.rafaeros.todo.dto.UserRegisterDTO;
 import br.rafaeros.todo.service.UserService;
@@ -20,7 +20,15 @@ public class AuthController {
 
     
     @GetMapping("/login")
-    public String loginPage() {
+    public String loginPage(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout, Model model) {
+
+        if (error != null) {
+            model.addAttribute("warning", "Wrong email or password!");
+        }
+
+        if (logout != null) {
+            model.addAttribute("success", "You have been logged out successfully!");
+        }
         return "login";
     }
     
@@ -35,7 +43,8 @@ public class AuthController {
         @RequestParam String email,
         @RequestParam String password,
         @RequestParam String confirmPassword,
-        Model model
+        Model model,
+        RedirectAttributes redirectedAttributes
     ) {
         if (!password.equals(confirmPassword)) {
             model.addAttribute("errorPassword", "Passwords do not match!");
@@ -45,13 +54,13 @@ public class AuthController {
         try {
             UserRegisterDTO userDto = new UserRegisterDTO(username, email, password, confirmPassword);
             userService.registerUser(userDto);
-            model.addAttribute("successMessage", "User registered successfully!");
+            redirectedAttributes.addFlashAttribute("success", "User registered successfully!");
             return "redirect:/login?registered=true";
         } catch (DataIntegrityViolationException e) {
-            model.addAttribute("errorEmail", "Email already exists!");
+            model.addAttribute("warning", "Email already exists!");
             return "register";
         } catch (Exception e) {
-            model.addAttribute("errorMessage", "An error occurred while registering the user." + e.getMessage());
+            model.addAttribute("error", "An error occurred while registering the user." + e.getMessage());
             return "register";
         }
         

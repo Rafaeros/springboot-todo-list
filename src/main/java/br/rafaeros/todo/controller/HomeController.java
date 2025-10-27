@@ -5,6 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import br.rafaeros.todo.model.User;
 import br.rafaeros.todo.service.UserService;
@@ -18,14 +19,18 @@ public class HomeController {
         this.userService = userService;
     }
     
-    @GetMapping("/")
-    public String home(Model model){
+    @GetMapping("/home")
+    public String home(@RequestParam(value = "login", required = false) String login, Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String email = auth.getName();
 
         User user = userService.findByEmail(email);
         if (user == null) {
             return "redirect:/login";
+        }
+
+        if (login != null) {
+            model.addAttribute("success", "Login successful! Welcome back!");
         }
         model.addAttribute("username", user.getName());
         return "home";

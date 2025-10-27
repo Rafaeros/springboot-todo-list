@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:replace="fragments/head :: head('Login')"></head>
+<head th:replace="~{fragments/head :: head('Login')}"></head>
 
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
@@ -23,6 +23,8 @@
                     class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required>
             </div>
+
+            <div th:replace="~{fragments/messages :: messages}"></div>
 
             <button type="submit"
                 class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors">

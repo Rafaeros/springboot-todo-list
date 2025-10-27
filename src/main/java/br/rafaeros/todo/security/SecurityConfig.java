@@ -41,7 +41,9 @@ public class SecurityConfig {
                         .loginProcessingUrl("/login")
                         .usernameParameter("email")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/", true)
+                         .successHandler((request, response, authentication) -> {
+                            response.sendRedirect("/home?login=true");
+                        })
                         .failureUrl("/login?error=true")
                         .permitAll())
                 .logout(logout -> logout

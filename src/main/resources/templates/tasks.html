@@ -8,10 +8,8 @@
     <!-- Header -->
     <div th:replace="~{fragments/header :: header}"></div>
 
-    <p class="text-center font-bold text-sm mb-4 bg-green-400 p-2" th:if="${success != null}" th:text="${success}"></p>
-    <p class="text-center font-bold text-sm mb-4 bg-yellow-400 p-2" th:if="${warning != null}" th:text="${warning}"></p>
-    <p class="text-center font-bold text-sm mb-4 bg-red-400 p-2" th:if="${error != null}" th:text="${error}"></p>
-
+    <div th:replace="~{fragments/messages :: messages}"></div>
+    
     <!-- Content -->
     <div class="container mx-auto p-4 flex flex-col gap-4 justify-start items-start overflow-y-scroll">
         <!-- Tasks-->
