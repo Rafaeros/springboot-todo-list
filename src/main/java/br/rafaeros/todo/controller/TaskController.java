@@ -89,6 +89,8 @@ public class TaskController {
         model.addAttribute("priorities", TaskPriority.values());
         model.addAttribute("TaskStatus", TaskStatus.class);
         model.addAttribute("userTasks", taskService.findAllWithFilter(user.getId(), taskStatus, taskPriority));
+        model.addAttribute("selectedStatus", status);
+        model.addAttribute("selectedPriority", priority);
         return "tasks";
     }
 

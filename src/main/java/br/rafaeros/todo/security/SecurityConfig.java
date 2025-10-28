@@ -42,7 +42,7 @@ public class SecurityConfig {
                         .usernameParameter("email")
                         .passwordParameter("password")
                          .successHandler((request, response, authentication) -> {
-                            response.sendRedirect("/home?login=true");
+                            response.sendRedirect("/?login=true");
                         })
                         .failureUrl("/login?error=true")
                         .permitAll())

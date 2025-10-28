@@ -19,7 +19,7 @@ public class HomeController {
         this.userService = userService;
     }
     
-    @GetMapping("/home")
+    @GetMapping("/")
     public String home(@RequestParam(value = "login", required = false) String login, Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String email = auth.getName();
