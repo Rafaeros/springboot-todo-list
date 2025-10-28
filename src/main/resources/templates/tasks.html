@@ -9,19 +9,19 @@
     <div th:replace="~{fragments/header :: header}"></div>
 
     <div th:replace="~{fragments/messages :: messages}"></div>
-    
+
     <!-- Content -->
     <div class="container mx-auto p-4 flex flex-col gap-4 justify-start items-start overflow-y-scroll">
         <!-- Tasks-->
-        <h1 th:if="${pendingTasks == null or pendingTasks.size() == 0}"
+        <h1 th:if="${userTasks == null or userTasks.size() == 0}"
             class="w-full mt-5 p-2 text-2xl text-left font-bold text-blue-600 border-b border-blue-600">No Pending tasks
             found
         </h1>
 
         <!-- Pending Tasks-->
-        <ul th:if="${pendingTasks != null and pendingTasks.size() > 0}" class="w-full">
+        <ul th:if="${userTasks != null and userTasks.size() > 0}" class="w-full">
             <h1 class="text-2xl font-bold text-blue-600 border-b border-blue-600">Pending Tasks</h1>
-            <li th:each="task : ${pendingTasks}" th:if="${task.status == TaskStatus.PENDING}"
+            <li th:each="task : ${userTasks}" th:if="${task.status == TaskStatus.PENDING}"
                 class="flex flex-row gap-4 items-center bg-white rounded p-3 shadow">
 
                 <form th:action="@{/tasks/{id}/status(id=${task.id})}" method="post" th:object="${task}">
@@ -36,7 +36,8 @@
                     <!-- Task info -->
                     <div class="flex flex-col w-40">
                         <h2 class="text-lg font-bold" th:text="${'Title: ' + task.title}"></h2>
-                        <p class="text-gray-600 flex-wrap" th:if="${task.description != ''}" th:text="${'Description: ' + task.description}"></p>
+                        <p class="text-gray-600 flex-wrap" th:if="${task.description != ''}"
+                            th:text="${'Description: ' + task.description}"></p>
                         <p class="text-gray-600" th:text="${'Priority: ' + task.priority}"></p>
                     </div>
 
@@ -48,10 +49,10 @@
         </ul>
 
         <!-- Completed Tasks-->
-        <ul th:if="${completedTasks != null and completedTasks.size() > 0}" class="w-full bg-white rounded p-2">
+        <ul th:if="${userTasks != null and userTasks.size() > 0}" class="w-full bg-white rounded p-2">
             <h1 class="text-2xl font-bold text-blue-600 border-b border-blue-600">
                 Completed Tasks</h1>
-            <li th:each="task : ${completedTasks}" th:if="${task.status == TaskStatus.COMPLETED}"
+            <li th:each="task : ${userTasks}" th:if="${task.status == TaskStatus.COMPLETED}"
                 class="flex flex-row gap-4 items-center bg-white rounded p-3 shadow">
 
                 <form th:action="@{/tasks/{id}/status(id=${task.id})}" method="post" th:object="${task}">
@@ -66,7 +67,8 @@
                     <!-- Task info -->
                     <div class="flex flex-col w-40 gap-2">
                         <h2 class="text-lg font-bold" th:text="${'Title: ' + task.title}"></h2>
-                        <p class="text-gray-600 flex-wrap" th:if="${task.description != ''}" th:text="${'Description: ' + task.description}"></p>
+                        <p class="text-gray-600 flex-wrap" th:if="${task.description != ''}"
+                            th:text="${'Description: ' + task.description}"></p>
                         <p class="text-gray-600" th:text="${'Priority: ' + task.priority}"></p>
                         <p class="flex">
                             <img th:src="@{/img/check.svg}" class="w-6 h-6" alt="Completed at:">
@@ -82,6 +84,48 @@
 
     </div>
 
+    <!-- Floating Button and Filter Modal -->
+    <div x-data="{ openFilterModal: false }" class="fixed bottom-20 right-4 sm:hidden">
+        <button @click="openFilterModal = true"
+            class="bg-blue-500 hover:bg-blue-600 text-white rounded-full py-3 px-4 shadow-lg">
+            <img th:src="@{/img/filter.svg}" alt="Filter" class="w-8 h-8">
+        </button>
+
+        <div x-show="openFilterModal" x-transition
+            class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+
+            <div class="bg-white p-6 rounded-lg shadow-lg w-96" @click.away="openFilterModal = false">
+
+                <h2 class="text-xl font-bold mb-4 text-blue-600">Filter Tasks</h2>
+
+                <!-- Forms -->
+                <form th:action="@{/tasks/filter}" method="get" class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 mb-1">Status</label>
+                        <select name="status" class="w-full border border-gray-300 rounded p-2">
+                            <option value="">ALL</option>
+                            <option value="PENDING">PENDING</option>
+                            <option value="COMPLETED">COMPLETED</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-1">Priority</label>
+                        <select name="priority" class="w-full border border-gray-300 rounded p-2 outline-blue-500">
+                            <option value="">ALL</option>
+                            <option th:each="priority : ${priorities}" th:value="${priority}" th:text="${priority}">
+                                Priority</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+                        Apply Filter
+                    </button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
     <!-- Floating Button and Modal-->
     <div x-data="{ openModal: false }" class="fixed bottom-4 right-4 sm:hidden">
         <button @click="openModal = true"
@@ -94,7 +138,7 @@
 
             <div class="bg-white p-6 rounded-lg shadow-lg w-96" @click.away="openModal = false">
 
-                <h2 class="text-xl font-bold mb-4">Add Task</h2>
+                <h2 class="text-xl font-bold mb-4 text-blue-600">Add Task</h2>
 
                 <!-- Forms -->
                 <form th:action="@{/tasks}" method="post">

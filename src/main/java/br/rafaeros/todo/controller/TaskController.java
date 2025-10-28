@@ -48,8 +48,47 @@ public class TaskController {
         model.addAttribute("username", user.getName());
         model.addAttribute("priorities", TaskPriority.values());
         model.addAttribute("TaskStatus", TaskStatus.class);
-        model.addAttribute("pendingTasks", taskService.findAllPendingByUserId(user.getId()));
-        model.addAttribute("completedTasks", taskService.findAllCompletedByUserId(user.getId()));
+        model.addAttribute("userTasks", taskService.findAllByUserId(user.getId()));
+        return "tasks";
+    }
+
+    // Read Filter
+    @GetMapping("/tasks/filter")
+    public String filterTasks(@RequestParam(value = "status", required = false) String status, @RequestParam(value = "priority", required = false) String priority, Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName();
+        User user = userService.findByEmail(email);
+        TaskStatus taskStatus = null;
+        TaskPriority taskPriority = null;
+
+        if (user == null) {
+            return "redirect:/login";
+        }
+
+        if (status == "" && priority == "") {
+            return "redirect:/tasks";
+        }
+
+        if (status != null && !status.isBlank()) {
+            try {
+                taskStatus = TaskStatus.valueOf(status.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                model.addAttribute("error", e.getMessage());
+            }
+        }
+
+        if (priority != null && !priority.isBlank()) {
+            try {
+                taskPriority = TaskPriority.valueOf(priority.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                model.addAttribute("error", e.getMessage());
+            }
+        }
+        
+        model.addAttribute("username", user.getName());
+        model.addAttribute("priorities", TaskPriority.values());
+        model.addAttribute("TaskStatus", TaskStatus.class);
+        model.addAttribute("userTasks", taskService.findAllWithFilter(user.getId(), taskStatus, taskPriority));
         return "tasks";
     }
 

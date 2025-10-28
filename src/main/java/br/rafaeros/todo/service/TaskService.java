@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import br.rafaeros.todo.model.Task;
+import br.rafaeros.todo.model.enums.TaskPriority;
 import br.rafaeros.todo.model.enums.TaskStatus;
 import br.rafaeros.todo.repository.TaskRepository;
 
@@ -34,12 +35,16 @@ public class TaskService {
         return taskRepository.findAllByUserId(userId);
     }
 
-    public List<Task> findAllPendingByUserId(long userId) {
-        return taskRepository.findAllStatusByUserId(userId, TaskStatus.PENDING);
-    }
-
-    public List<Task> findAllCompletedByUserId(long userId) {
-        return taskRepository.findAllStatusByUserId(userId, TaskStatus.COMPLETED);
+    public List<Task> findAllWithFilter(Long userId, TaskStatus status, TaskPriority priority) {
+        if (status == null && priority == null) {
+            return taskRepository.findAllByUserId(userId);
+        } else if (status != null && priority == null) {
+            return taskRepository.findByUserIdAndStatus(userId, status);
+        } else if (status == null && priority != null) {
+            return taskRepository.findByUserIdAndPriority(userId, priority);
+        } else {
+            return taskRepository.findByUserIdAndStatusAndPriority(userId, status, priority);
+        }
     }
 
     public void updateTask(Task task) {
