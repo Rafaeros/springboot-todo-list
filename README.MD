@@ -37,19 +37,9 @@ Um sistema de **gerenciamento de tarefas (To-Do List)** desenvolvido em **Java c
 
 ## 🖼️ Capturas de Tela
 
-- ### 📱Mobile
-
-| Login | Cadastro | Home |
-|:--:|:--:|:--:|
-| ![Login](./docs/images/login.png) | ![Cadastro](./docs/images/register.png) | ![Home](./docs/images/home.png) |
-
-| Tarefas | Nova Tarefa | Tarefa Adicionada |
-|:--:|:--:|:--:|
-| ![Tarefas](./docs/images/tasks.png) | ![Nova Tarefa](./docs/images/add-task.png) | ![Tarefa Adicionada](./docs/images/task-added.png) |
-
-- ### 🖥️Desktop
-
- ![Tarefas Desktop](./docs/images/tasks-ds.png)
+Login | Cadastro | Home
+--- | --- | ---
+<img src="./assets/images/login.png" alt="Login" width="250"> | <img src="./assets/images/register.png" alt="Cadastro" width="250"> | <img src="./assets/images/home.png" alt="Home" width="250">
 
 ---
 
