@@ -39,7 +39,7 @@ Um sistema de **gerenciamento de tarefas (To-Do List)** desenvolvido em **Java c
 
 Login | Cadastro | Home
 --- | --- | ---
-<img src="./assets/images/login.png" alt="Login" width="250"> | <img src="./assets/images/register.png" alt="Cadastro" width="250"> | <img src="./assets/images/home.png" alt="Home" width="250">
+<img src="./assets/images/login.png" raw=true alt="Login" width="250"> | <img src="./assets/images/register.png" alt="Cadastro" width="250"> | <img src="./assets/images/home.png" alt="Home" width="250">
 
 ---
 
@@ -68,5 +68,6 @@ Se vocês gostam do projeto e deseja contribuir, sinta-se livre para fazer um pu
 ## 📜 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://github.com/Rafaeros/springboot-todo-list/blob/main/LICENSE) para mais detalhes.
+
 
 ---
