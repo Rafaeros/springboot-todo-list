@@ -39,7 +39,7 @@ Um sistema de **gerenciamento de tarefas (To-Do List)** desenvolvido em **Java c
 
 Login | Cadastro | Home
 --- | --- | ---
-![Login](https://github.com/Rafaeros/springboot-todo-list/blob/044c04ef0d44a0c7c6c097df5063d321cd5c38ca/assets/images/login.png) | ![Cadastro](images/register.png) | ![Home](images/home.png)
+![Login](https://drive.google.com/file/d/1cF93GqzdY2PfIkyp0vjp86s9xF7y5v1-/view?usp=sharing) | ![Cadastro](https://drive.google.com/file/d/1qAs5kBAYuNLg-3KYaN6LD6ZzAyciDCeD/view?usp=sharing) | ![Home](https://drive.google.com/file/d/1VvqyNa_ysUnbFh0qrp7Lti90UdBRwQZP/view?usp=sharing)
 
 ---
 
