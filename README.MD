@@ -35,14 +35,6 @@ Um sistema de **gerenciamento de tarefas (To-Do List)** desenvolvido em **Java c
 
 ---
 
-## 🖼️ Capturas de Tela
-
-Login | Cadastro | Home
---- | --- | ---
-![Login](https://drive.google.com/file/d/1cF93GqzdY2PfIkyp0vjp86s9xF7y5v1-/view?usp=sharing) | ![Cadastro](https://drive.google.com/file/d/1qAs5kBAYuNLg-3KYaN6LD6ZzAyciDCeD/view?usp=sharing) | ![Home](https://drive.google.com/file/d/1VvqyNa_ysUnbFh0qrp7Lti90UdBRwQZP/view?usp=sharing)
-
----
-
 ## 🚀 Configuração do projeto
 
 1. Clone o repositório do GitHub: `git clone https://github.com/rafaeros/springboot-todo-list.git`
