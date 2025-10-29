@@ -28,22 +28,35 @@ Um sistema de **gerenciamento de tarefas (To-Do List)** desenvolvido em **Java c
   - Criação, edição e exclusão de categorias
   - Cada tarefa pertence a uma categoria
 
-- 📝 **Gerenciamento de Tarefas (Em desenvolvimento)**
+- 📝 **Gerenciamento de Tarefas**
   - Criar, visualizar, atualizar e excluir tarefas
-  - Status: pendente, em andamento ou concluída
-  - Atribuição de prioridade
-  - Registro de data de criação e conclusão
+  - Status: pendente ou concluída
+  - Registro de data de conclusão
 
-- 📊 **Painel do Usuário (Em desenvolvimento)**
-  - Listagem de tarefas do usuário logado
-  - Filtro por categoria e status
+---
+
+## 🖼️ Capturas de Tela
+
+- ### 📱Mobile
+
+| Login | Cadastro | Home |
+|:--:|:--:|:--:|
+| ![Login](./src/docs/images/login.png) | ![Cadastro](./src/docs/images/register.png) | ![Home](./src/docs/images/home.png) |
+
+| Tarefas | Nova Tarefa | Tarefa Adicionada |
+|:--:|:--:|:--:|
+| ![Tarefas](./src/docs/images/tasks.png) | ![Nova Tarefa](./src/docs/images/add-task.png) | ![Tarefa Adicionada](./src/docs/images/task-added.png) |
+
+- ### 🖥️Desktop
+
+ ![Tarefas Desktop](./src/docs/images/tasks-ds.png)
 
 ---
 
 ## 🚀 Configuração do projeto
 
-1. Clone o repositório do GitHub: `git clone https://github.com/rafaeros/to-do-list.git`
-2. Navegue para a pasta do projeto: `cd to-do-list`
+1. Clone o repositório do GitHub: `git clone https://github.com/rafaeros/springboot-todo-list.git`
+2. Navegue para a pasta do projeto: `cd springboot-todo-list`
 3. Instale as dependências: `mvn install`
 4. configure o banco de dados em `src/main/resources/application.properties`
   ```properties
