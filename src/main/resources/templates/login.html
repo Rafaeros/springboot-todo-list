@@ -3,40 +3,42 @@
 
 <head th:replace="~{fragments/head :: head('Login')}"></head>
 
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
 
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
-        <h2 class="text-2xl font-bold mb-6 text-center text-blue-600">Login</h2>
+    <div class="bg-white p-6 sm:p-8 rounded-lg shadow-md w-full max-w-sm sm:max-w-md">
+        <div th:insert="~{fragments/logo :: logo}" class="bg-blue-600 p-2 mb-5 flex justify-center items-center"></div>
 
+        <h2 class="text-xl sm:text-2xl font-bold mb-6 text-center text-blue-600">Login</h2>
         <form th:action="@{/login}" method="post" class="space-y-4">
 
             <div>
-                <label for="email" class="block text-gray-700 font-medium mb-1">Email</label>
+                <label for="email" class="block text-gray-700 font-medium mb-1 text-sm sm:text-base">Email</label>
                 <input type="text" id="email" name="email"
-                    class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
                     required>
             </div>
 
             <div>
-                <label for="password" class="block text-gray-700 font-medium mb-1">Password</label>
+                <label for="password" class="block text-gray-700 font-medium mb-1 text-sm sm:text-base">Password</label>
                 <input type="password" id="password" name="password"
-                    class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
                     required>
             </div>
 
             <div th:replace="~{fragments/messages :: messages}"></div>
 
             <button type="submit"
-                class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors">
+                class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors text-sm sm:text-base">
                 Login
             </button>
 
         </form>
 
-        <p class="text-sm text-gray-500 mt-4 text-center">
+        <p class="text-xs sm:text-sm text-gray-500 mt-4 text-center">
             Don't have an account?
             <a th:href="@{/register}" class="text-blue-600 hover:underline">Sign Up</a>
         </p>
+
     </div>
 
 </body>
